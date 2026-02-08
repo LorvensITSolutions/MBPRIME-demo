@@ -7,15 +7,6 @@ import logo from '../assets/mb.png'
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [isScrolled, setIsScrolled] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: 'Projects', to: '/projects' },
@@ -26,11 +17,23 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${isScrolled ? 'py-4 bg-primary/90 backdrop-blur-lg border-b border-white/10 shadow-2xl' : 'py-6 bg-transparent'}`}>
+    <header className="absolute top-0 left-0 w-full z-[1000] py-6 bg-transparent">
       <div className="container flex justify-between items-center">
-        <Link to="/" className="cursor-pointer flex items-center gap-2">
-          <img src={logo} alt="MB Prime Logo" className="md:h-18 h-14 w-auto object-contain" />
-        </Link>
+        <div className="flex items-center gap-4 md:gap-6">
+          <Link to="/" className="cursor-pointer flex items-center">
+            <img src={logo} alt="MB Prime Logo" className="md:h-18 h-12 w-auto object-contain" />
+          </Link>
+
+          <div className="h-8 md:h-12 w-[1px] bg-white/20"></div>
+
+          <Link to="/projects" className="cursor-pointer flex items-center">
+            <img
+              src="https://res.cloudinary.com/durbtkhbz/image/upload/v1770526685/sklmlogo_c2trtg.png"
+              alt="Srikakulam Project Logo"
+              className="md:h-18 h-10 w-auto object-contain"
+            />
+          </Link>
+        </div>
 
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (

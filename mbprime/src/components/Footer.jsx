@@ -5,7 +5,7 @@ import logo from '../assets/mb.png';
 
 const Footer = () => {
     return (
-        <footer id="contact" className="pt-20 bg-[#020c1b] border-t border-white/10">
+        <footer id="contact" className="pt-20 bg-primary border-t border-white/10">
             <div className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-16 pb-20">
                 <div className="lg:col-span-2">
                     <Link to="/" className="cursor-pointer flex items-center gap-2 mb-6">

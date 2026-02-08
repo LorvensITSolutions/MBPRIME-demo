@@ -2,85 +2,79 @@ import React from 'react';
 import { X, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const EnquiryForm = ({ isModal = false, onClose }) => {
+const EnquiryForm = ({ isModal = false, onClose, className = "" }) => {
     return (
         <motion.div
-            className={`w-full ${isModal ? 'max-w-[500px]' : 'max-w-full'} overflow-hidden rounded-md shadow-2xl border border-white/10 flex flex-col`}
+            className={`w-full ${isModal ? 'max-w-[500px]' : 'max-w-full'} bg-white border border-secondary/10 rounded-2xl shadow-xl overflow-hidden p-6 md:p-8 flex flex-col relative ${className}`}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
         >
-            {/* Header */}
-            <div className="bg-primary flex justify-between items-center px-3 py-2 md:px-6 md:py-4 border-b border-white/10 relative">
-                <div className="w-full text-center">
-                    <h2 className="text-secondary text-lg md:text-2xl font-serif font-bold tracking-widest">ENQUIRE NOW</h2>
+            {isModal && (
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 text-slate-400 hover:text-secondary transition-colors"
+                >
+                    <X size={20} />
+                </button>
+            )}
+
+            <div className="text-center mb-6 md:mb-8">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary tracking-wide">Enquire Now</h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-secondary to-yellow-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <form className="space-y-4 md:space-y-5">
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all shadow-sm focus:bg-white"
+                    />
                 </div>
-                {isModal && (
+
+                <div className="relative">
+                    <select className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-slate-200 bg-slate-50 text-primary focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none appearance-none cursor-pointer shadow-sm focus:bg-white">
+                        <option value="+91">IN - India (+91)</option>
+                        <option value="+1">US - USA (+1)</option>
+                        <option value="+44">UK - United Kingdom (+44)</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+                </div>
+
+                <div>
+                    <input
+                        type="tel"
+                        placeholder="Mobile no without country code*"
+                        className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all shadow-sm focus:bg-white"
+                    />
+                </div>
+
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all shadow-sm focus:bg-white"
+                    />
+                </div>
+
+                <div>
+                    <textarea
+                        placeholder="Message"
+                        rows="5"
+                        className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all resize-none shadow-sm focus:bg-white"
+                    ></textarea>
+                </div>
+
+                <div className="pt-2 md:pt-4 flex justify-center">
                     <button
-                        onClick={onClose}
-                        className="text-textMuted hover:text-white transition-colors absolute right-4"
+                        type="submit"
+                        className="w-full py-3 md:py-4 bg-gradient-to-r from-secondary to-yellow-600 text-white font-bold tracking-[0.15em] rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md uppercase text-sm md:text-base"
                     >
-                        <X size={18} className="md:w-6 md:h-6" />
+                        Submit Enquiry
                     </button>
-                )}
-            </div>
-
-            {/* Form Body with Primary/Navy Gradient */}
-            <div className="bg-linear-to-br from-primary to-[#0d213f] px-2 py-2 md:px-8 md:py-10">
-
-
-                <form className="space-y-2 md:space-y-4">
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Full Name"
-                            className="w-full px-2 py-1.5 md:px-4 md:py-3 text-xs md:text-base rounded-sm border border-white/10 bg-white/5 text-white placeholder:text-textMuted focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
-                        />
-                    </div>
-
-                    <div className="relative">
-                        <select className="w-full px-2 py-1.5 md:px-4 md:py-3 text-xs md:text-base rounded-sm border border-white/10 bg-white/5 text-white focus:border-secondary focus:ring-1 focus:ring-secondary outline-none appearance-none cursor-pointer">
-                            <option className="bg-primary">IN - India (+91)</option>
-                            <option className="bg-primary">US - USA (+1)</option>
-                            <option className="bg-primary">UK - United Kingdom (+44)</option>
-                        </select>
-                        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-textMuted pointer-events-none" size={14} />
-                    </div>
-
-                    <div>
-                        <input
-                            type="tel"
-                            placeholder="Mobile no without country code*"
-                            className="w-full px-2 py-1.5 md:px-4 md:py-3 text-xs md:text-base rounded-sm border border-white/10 bg-white/5 text-white placeholder:text-textMuted focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
-                        />
-                    </div>
-
-                    <div>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="w-full px-2 py-1.5 md:px-4 md:py-3 text-xs md:text-base rounded-sm border border-white/10 bg-white/5 text-white placeholder:text-textMuted focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
-                        />
-                    </div>
-
-                    <div>
-                        <textarea
-                            placeholder="Message"
-                            rows="2"
-                            className="w-full px-2 py-1.5 md:px-4 md:py-3 text-xs md:text-base rounded-sm border border-white/10 bg-white/5 text-white placeholder:text-textMuted focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all resize-none"
-                        ></textarea>
-                    </div>
-
-                    <div className="pt-1 md:pt-4 flex justify-center">
-                        <button
-                            type="submit"
-                            className="btn-primary w-full py-1.5 text-xs md:text-base md:py-3"
-                        >
-                            SUBMIT
-                        </button>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </motion.div>
     );
 };

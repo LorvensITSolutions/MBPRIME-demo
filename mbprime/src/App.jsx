@@ -12,6 +12,7 @@ import SEO from './components/SEO'
 import ProjectProgress from './components/ProjectProgress'
 import EnquiryPopup from './components/EnquiryPopup'
 import OwnersMessage from './components/OwnersMessage'
+import ThreeDLayouts from './components/ThreeDLayouts'
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -48,6 +49,7 @@ const Home = () => (
     <Hero />
     <OwnersMessage />
     <About />
+    <ThreeDLayouts />
     <Amenities />
     <Testimonials />
     <Location />

@@ -19,7 +19,7 @@ const EnquiryPopup = () => {
         if (!hasSubmitted && !isVisible) {
             const timer = setTimeout(() => {
                 setIsVisible(true);
-            }, 10000);
+            }, 20000);
             return () => clearTimeout(timer);
         }
     }, [isVisible]);
@@ -67,7 +67,7 @@ const EnquiryPopup = () => {
                             <X size={20} />
                         </button>
 
-                        <div className="p-8 md:p-10">
+                        <div className="p-6 md:p-10">
                             {isSubmitted ? (
                                 <div className="text-center py-10">
                                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -78,23 +78,23 @@ const EnquiryPopup = () => {
                                 </div>
                             ) : (
                                 <>
-                                    <div className="mb-8">
-                                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-2">
+                                    <div className="mb-4 md:mb-8">
+                                        <h2 className="text-xl md:text-3xl font-serif font-bold text-primary mb-2">
                                             Fill in your details and get in touch with us.
                                         </h2>
-                                        <div className="space-y-2 mt-4">
-                                            <div className="flex items-center gap-3 text-secondary font-bold">
-                                                <Phone size={18} />
+                                        <div className="space-y-1 md:space-y-2 mt-2 md:mt-4">
+                                            <div className="flex items-center gap-2 md:gap-3 text-secondary font-bold text-sm md:text-base">
+                                                <Phone size={16} className="md:w-[18px] md:h-[18px]" />
                                                 <span>+91 1234567891</span>
                                             </div>
-                                            <div className="flex items-center gap-3 text-gray-600 text-sm">
-                                                <Mail size={18} />
+                                            <div className="flex items-center gap-2 md:gap-3 text-gray-600 text-xs md:text-sm">
+                                                <Mail size={16} className="md:w-[18px] md:h-[18px]" />
                                                 <span>info@mbprime.com</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-5">
                                         <div className="relative">
                                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
                                                 <User size={18} />
@@ -106,7 +106,7 @@ const EnquiryPopup = () => {
                                                 placeholder="Your Name"
                                                 value={formData.name}
                                                 onChange={handleChange}
-                                                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
+                                                className="w-full pl-10 pr-4 py-2 md:py-3 text-sm md:text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
                                             />
                                         </div>
 
@@ -121,7 +121,7 @@ const EnquiryPopup = () => {
                                                 placeholder="Email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
+                                                className="w-full pl-10 pr-4 py-2 md:py-3 text-sm md:text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
                                             />
                                         </div>
 
@@ -136,12 +136,12 @@ const EnquiryPopup = () => {
                                                 placeholder="Phone Number"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
+                                                className="w-full pl-10 pr-4 py-2 md:py-3 text-sm md:text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700"
                                             />
                                         </div>
 
                                         <div className="relative">
-                                            <div className="absolute top-3 left-3 pointer-events-none text-secondary">
+                                            <div className="absolute top-2 md:top-3 left-3 pointer-events-none text-secondary">
                                                 <MessageSquare size={18} />
                                             </div>
                                             <textarea
@@ -150,16 +150,16 @@ const EnquiryPopup = () => {
                                                 placeholder="Message (Optional)"
                                                 value={formData.message}
                                                 onChange={handleChange}
-                                                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700 resize-none"
+                                                className="w-full pl-10 pr-4 py-2 md:py-3 text-sm md:text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-gray-400 text-gray-700 resize-none"
                                             ></textarea>
                                         </div>
 
                                         <button
                                             type="submit"
-                                            className="w-40 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-bold py-3 px-6 rounded-md shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1 uppercase text-sm tracking-wider flex items-center justify-center gap-2"
-                                            style={{ backgroundColor: '#2b95d8' }} // Matching the blue button in screenshot usually
+                                            className="w-full md:w-40 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-bold py-2 md:py-3 px-6 rounded-md shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1 uppercase text-xs md:text-sm tracking-wider flex items-center justify-center gap-2"
+                                            style={{ backgroundColor: '#2b95d8' }}
                                         >
-                                            Submit <span className="text-lg">→</span>
+                                            Submit <span className="text-base md:text-lg">→</span>
                                         </button>
                                     </form>
                                 </>
